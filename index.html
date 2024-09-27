@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./images/favicon.ico">
+    <title>Shaad Quazi</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-C33SFLBNXH"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-C33SFLBNXH");
+    </script>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        transition: background-color 0.3s, color 0.3s;
+        font-family: "Open Sans", Times, serif;
+        font-weight: lighter;        
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+
+      header,
+      footer {
+        position: fixed;
+        left: 0;
+        right: 0;
+        z-index: 10;
+      }
+
+      header {
+        top: 0;
+        background-color: white;
+        border-bottom: 1px solid #dee2e6;
+      }
+
+      footer {
+        bottom: 0;
+        background-color: white;
+        border-top: 1px solid #dee2e6;
+      }
+
+      footer a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .main-content a {
+        color: inherit;
+      }
+
+      .main-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        overflow-y: auto;
+      }
+
+      .main-content div img {
+        height: 175px;
+        width: 175px;
+        object-fit: cover;
+      }
+
+      body.bg-dark header,
+      body.bg-dark footer {
+        background-color: #212529;
+      }
+
+      body.bg-dark header,
+      body.bg-dark footer,
+      body.bg-dark h1,
+      body.bg-dark h2,
+      body.bg-dark p,
+      body.bg-dark a {
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body class="bg-dark text-dark">
+    <div class="main-content">
+      <div class="mb-4 text-center" data-toggle="tooltip" title="Hey there!">
+        <img
+          src="./images/avatar.jpg"
+          alt="Profile Image"
+          class="img-thumbnail rounded-circle"
+        />
+      </div>
+
+      <div class="mb-3 text-center">
+        <h2>Shaad Quazi</h2>
+        <p>
+          Full Stack Engineer @
+          <b>
+            <i>
+              <a
+                href="https://scanbuy.com/"
+                target="_blank"
+                rel="noreferrer"
+                data-toggle="tooltip"
+                title="Learn more about my work!"
+              >
+                Scanbuy
+              </a>
+            </i>
+          </b>
+        </p>
+      </div>
+
+      <div class="mb-5 text-center">
+        <a href="http://github.com/shaadquazi" target="_blank" rel="noreferrer">
+          <b>
+            <i data-toggle="tooltip" title="Check out my projects!">
+              Projects
+            </i>
+          </b>
+        </a>
+        <p class="d-inline-block mx-2">|</p>
+        <a href="https://drive.google.com/file/d/1iEO877SRvMqJEkoIfzorGRQA6mWO_bqH/view?usp=share_link" target="_blank" rel="noreferrer">
+          <b>
+            <i data-toggle="tooltip" title="Take a look at my resume!">
+              Resume
+            </i>
+          </b></a
+        >
+      </div>
+    </div>
+
+    <footer class="d-flex justify-content-between align-items-center p-3">
+      <div class="text-center">
+        <a href="http://github.com/shaadquazi" target="_blank" rel="noreferrer" class="mx-2">
+          <i class="bi bi-github" style="font-size: 2rem"></i>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/shaadquazi/"
+          target="_blank"
+          rel="noreferrer"
+          class="mx-2"
+        >
+          <i class="bi bi-linkedin" style="font-size: 2rem"></i>
+        </a>
+        <a href="mailto:shaadquazi@gmail.com" class="mx-2">
+          <i class="bi bi-envelope" style="font-size: 2rem"></i>
+        </a>
+      </div>
+      <div class="form-switch d-inline-block mx-2">
+        <input
+          class="form-check-input mt-3 mx-2"
+          type="checkbox"
+          role="switch"
+          id="themeToggle"
+          checked
+        />
+        <a class="form-check-label">
+          <i class="bi bi-moon-stars-fill" style="font-size: 2rem"></i>
+        </a>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <script>
+      const toggleBtn = document.getElementById("themeToggle");
+      toggleBtn.addEventListener("click", () => {
+        document.body.classList.toggle("bg-dark");
+        document.body.classList.toggle("text-light");
+      });
+
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+      });
+    </script>
+  </body>
+</html>
