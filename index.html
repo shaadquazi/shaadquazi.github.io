@@ -147,7 +147,7 @@
           </b>
         </a>
         <p class="d-inline-block mx-2">|</p>
-        <a href="https://drive.google.com/file/d/1iEO877SRvMqJEkoIfzorGRQA6mWO_bqH/view?usp=share_link" target="_blank" rel="noreferrer">
+        <a href="https://drive.google.com/file/d/1DCga-cJ2e4bTbB53Scu7o62CxkH7mWCj/view?usp=share_link" target="_blank" rel="noreferrer">
           <b>
             <i data-toggle="tooltip" title="Take a look at my resume!">
               Resume
@@ -158,7 +158,10 @@
     </div>
 
     <footer class="d-flex justify-content-between align-items-center p-3">
-      <div class="text-center">
+      <div class="text-center">        
+        <a href="#" id="dashboardLink" class="mx-2">
+          <i class="bi bi-terminal" style="font-size: 2rem"></i>
+        </a>
         <a href="http://github.com/shaadquazi" target="_blank" rel="noreferrer" class="mx-2">
           <i class="bi bi-github" style="font-size: 2rem"></i>
         </a>
@@ -200,6 +203,31 @@
 
       $(function () {
         $('[data-toggle="tooltip"]').tooltip();
+      });
+
+      // TODO: implement auth provider      
+      async function hashPassword(pwd) {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(pwd);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        return hashHex;
+      }
+      const dashboardLink = document.getElementById("dashboardLink");
+      const HARD_CODED_HASH = "227c0fa5127c454e0ec4e0034274b35e5770ec68c0b0890653833e6fb2aa16ca"; 
+
+      dashboardLink.addEventListener("click", async (e) => {
+        e.preventDefault();
+        const pwd = prompt("Enter password:");
+        if (pwd !== null) {
+          const hashed = await hashPassword(pwd);
+          if (hashed === HARD_CODED_HASH) {
+            window.location.href = "./dashboard/index.html";
+          } else {
+            alert("Incorrect password!");
+          }
+        }
       });
     </script>
   </body>
