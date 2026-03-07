@@ -1,154 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="../images/favicon.ico" />
-    <title>Dashboard</title>
+    <title>Dashboard | Shaad Quazi</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css"
-        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
+
     <style>
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            font-family: "Open Sans", Times, serif;
-            font-weight: lighter;
-            transition: background-color 0.3s, color 0.3s;
-        }
+      :root {
+        --transition-speed: 0.3s;
+      }
 
-        body {
-            display: flex;
-            flex-direction: column;
-        }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: "Open Sans", sans-serif;
+        font-weight: 300;
+        transition: background-color var(--transition-speed), color var(--transition-speed);
+      }
 
-        header,
-        footer {
-            position: fixed;
-            left: 0;
-            right: 0;
-            z-index: 10;
-        }
+      body {
+        display: flex;
+        flex-direction: column;
+      }
 
-        header {
-            top: 0;
-            background-color: white;
-            border-bottom: 1px solid #dee2e6;
-        }
+      header, footer {
+        position: fixed;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        background-color: white;
+        transition: background-color var(--transition-speed), border-color var(--transition-speed);
+      }
 
-        footer {
-            bottom: 0;
-            background-color: white;
-            border-top: 1px solid #dee2e6;
-        }
+      header { 
+        top: 0; 
+        border-bottom: 1px solid #dee2e6;
+      }
+      
+      footer { 
+        bottom: 0; 
+        border-top: 1px solid #dee2e6;
+      }
 
-        footer a {
-            text-decoration: none;
-            color: inherit;
-        }
+      .main-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 100px 20px;
+        overflow-y: auto;
+      }
 
-        .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            overflow-y: auto;
-        }
+      /* App Grid Styles */
+      .app-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 40px;
+        width: 100%;
+        max-width: 800px;
+        justify-items: center;
+      }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 30px;
-            width: 100%;
-            max-width: 900px;
-        }
+      .app-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.2s ease-in-out;
+        width: 120px;
+      }
 
-        body.bg-dark header,
-        body.bg-dark footer {
-            background-color: #212529;
-        }
+      .app-item:hover {
+        transform: scale(1.08);
+        color: inherit;
+      }
 
-        body.bg-dark header,
-        body.bg-dark footer,
-        body.bg-dark h1,
-        body.bg-dark h2,
-        body.bg-dark p,
-        body.bg-dark a {
-            color: white;
-        }
+      .app-icon {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 18px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        margin-bottom: 12px;
+      }
+
+      /* Dark Mode Overrides */
+      body.bg-dark {
+        background-color: #121212 !important;
+        color: #f8f9fa !important;
+      }
+
+      body.bg-dark header, 
+      body.bg-dark footer {
+        background-color: #1a1a1a;
+        border-color: #333;
+        color: white;
+      }
+
+      body.bg-dark a:not(.app-item) { color: #64b5f6; }
+
+      .social-link {
+        font-size: 1.8rem;
+        margin: 0 10px;
+        color: inherit;
+        text-decoration: none;
+        transition: transform 0.2s;
+        display: inline-block;
+      }
+
+      .social-link:hover {
+        transform: translateY(-3px);
+        color: inherit;
+      }
+
+      #dateTime {
+        font-size: 0.9rem;
+        font-weight: 400;
+      }
     </style>
-</head>
+  </head>
 
-<body class="bg-dark text-dark">
-    <header class="d-flex justify-content-end py-3 px-3">
-        <div class="d-flex flex-column align-items-end gap-1">
-            <!-- Date & Time -->
-            <div id="dateTime" class="bg-transparent"></div>
-        </div>
+  <body class="bg-dark">
+    <header class="d-flex justify-content-end py-3 px-4">
+      <div id="dateTime"></div>
     </header>
+
     <div class="main-content">
-        <div class="grid">
-            <!-- Slate App -->
-            <div class="mb-3 text-center" style="width: 100px;">
-                <a href="/apps/slate/index.html" target="_blank" rel="noreferrer" class="text-decoration-none">
-                    <img src="../apps/slate/icons/Icon-512.png" class="rounded-4" alt="Slate App"
-                        style="width: 75px; height: 75px; object-fit: cover;" />
-                </a>
-                <p>
-                    <b>
-                        Slate
-                    </b>
-                </p>
-            </div>
-        </div>
+      <div class="app-grid">
+        <!-- Slate App -->
+        <a href="/apps/slate/index.html" target="_blank" rel="noreferrer" class="app-item">
+          <img src="../apps/slate/icons/Icon-512.png" class="app-icon" alt="Slate App" />
+          <p class="text-center mb-0"><b>Slate</b></p>
+        </a>
+
+        <!-- Add more apps here in the future -->
+      </div>
     </div>
 
-    <footer class="d-flex justify-content-between align-items-center p-3">
-        <div class="text-center">
-            <a href="../index.html" class="mx-2">
-                <i class="bi bi-box-arrow-left" style="font-size: 2rem"></i>
-            </a>
-        </div>
-        <div class="form-switch d-inline-block mx-2">
-            <input class="form-check-input mt-3 mx-2" type="checkbox" role="switch" id="themeToggle" checked />
-            <a class="form-check-label">
-                <i class="bi bi-moon-stars-fill" style="font-size: 2rem"></i>
-            </a>
-        </div>
+    <footer class="d-flex justify-content-between align-items-center px-4 py-3">
+      <div class="d-flex align-items-center">
+        <!-- Back Link for Dashboard -->
+        <a href="../index.html" class="social-link" title="Back to Home">
+            <i class="bi bi-arrow-left-circle"></i>
+        </a>
+        <div class="vr mx-3 my-1"></div>
+        <a href="http://github.com/shaadquazi" target="_blank" rel="noreferrer" class="social-link">
+          <i class="bi bi-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/shaadquazi/" target="_blank" rel="noreferrer" class="social-link">
+          <i class="bi bi-linkedin"></i>
+        </a>
+        <a href="mailto:shaadquazi@gmail.com" class="social-link">
+          <i class="bi bi-envelope"></i>
+        </a>
+      </div>
+
+      <div class="form-check form-switch m-0">
+        <input class="form-check-input" type="checkbox" role="switch" id="themeToggle" checked />
+        <label class="form-check-label ms-2" for="themeToggle">
+          <i class="bi bi-moon-stars-fill"></i>
+        </label>
+      </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 
     <script>
-        const toggleBtn = document.getElementById("themeToggle");
-        toggleBtn.addEventListener("click", () => {
-            document.body.classList.toggle("bg-dark");
-            document.body.classList.toggle("text-light");
-        });
+      const body = document.body;
+      const toggleBtn = document.getElementById("themeToggle");
 
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip();
-        });
+      toggleBtn.addEventListener("change", () => {
+        body.classList.toggle("bg-dark");
+        localStorage.setItem('theme', body.classList.contains('bg-dark') ? 'dark' : 'light');
+      });
 
-        function updateDateTime() {
-            const now = new Date();
-            const options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
-            document.getElementById('dateTime').textContent = now.toLocaleString('en-US', options);
-        }
+      if (localStorage.getItem('theme') === 'light') {
+        body.classList.remove('bg-dark');
+        toggleBtn.checked = false;
+      }
 
-        updateDateTime();
-        setInterval(updateDateTime, 60000);
+      function updateDateTime() {
+        const now = new Date();
+        const options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
+        document.getElementById('dateTime').textContent = now.toLocaleString('en-US', options);
+      }
+
+      updateDateTime();
+      setInterval(updateDateTime, 60000);
+
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+      });
     </script>
-</body>
-
+  </body>
 </html>

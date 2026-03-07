@@ -5,43 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="./images/favicon.ico">
     <title>Shaad Quazi</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css"
-      rel="stylesheet"
-    />
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
+
     <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-C33SFLBNXH"
-    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C33SFLBNXH"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
+      function gtag() { dataLayer.push(arguments); }
       gtag("js", new Date());
-
       gtag("config", "G-C33SFLBNXH");
     </script>
+
     <style>
-      html,
-      body {
+      :root {
+        --transition-speed: 0.3s;
+      }
+
+      html, body {
         height: 100%;
         margin: 0;
         padding: 0;
-        transition: background-color 0.3s, color 0.3s;
-        font-family: "Open Sans", Times, serif;
-        font-weight: lighter;        
+        font-family: "Open Sans", sans-serif;
+        font-weight: 300;
+        transition: background-color var(--transition-speed), color var(--transition-speed);
       }
 
       body {
@@ -49,145 +41,134 @@
         flex-direction: column;
       }
 
-      header,
-      footer {
+      header, footer {
         position: fixed;
         left: 0;
         right: 0;
         z-index: 10;
+        background-color: white;
+        transition: background-color var(--transition-speed), border-color var(--transition-speed);
       }
 
-      header {
-        top: 0;
-        background-color: white;
-        border-bottom: 1px solid #dee2e6;
-      }
-
-      footer {
-        bottom: 0;
-        background-color: white;
+      header { top: 0; }
+      footer { 
+        bottom: 0; 
         border-top: 1px solid #dee2e6;
       }
 
-      footer a {
-        text-decoration: none;
-        color: inherit;
-      }
-      .main-content a {
-        color: inherit;
-      }
-
       .main-content {
+        flex: 1;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        flex: 1;
+        padding: 80px 20px;
         overflow-y: auto;
       }
 
-      .main-content div img {
+      .profile-img {
         height: 175px;
         width: 175px;
         object-fit: cover;
+        margin-bottom: 1.5rem;
+        border: 4px solid #dee2e6; /* Light mode border */
+        padding: 4px;
       }
 
-      body.bg-dark header,
+      body.bg-dark .profile-img {
+        border-color: #333; /* Dark mode border */
+      }
+
+      /* Dark Mode Overrides */
+      body.bg-dark {
+        background-color: #121212 !important;
+        color: #f8f9fa !important;
+      }
+
+      body.bg-dark header, 
       body.bg-dark footer {
-        background-color: #212529;
+        background-color: #1a1a1a;
+        border-color: #333;
+        color: white;
       }
 
-      body.bg-dark header,
-      body.bg-dark footer,
-      body.bg-dark h1,
-      body.bg-dark h2,
-      body.bg-dark p,
-      body.bg-dark a {
+      body.bg-dark a { color: #64b5f6; }
+      body.bg-dark .text-muted { color: #aaa !important; }
+
+      .btn-theme {
+        color: #212529;
+        border-color: #212529;
+        transition: all 0.2s;
+      }
+      .btn-theme:hover {
+        background-color: #212529;
         color: white;
+      }
+
+      body.bg-dark .btn-theme {
+        color: #f8f9fa;
+        border-color: #f8f9fa;
+      }
+      body.bg-dark .btn-theme:hover {
+        background-color: #f8f9fa;
+        color: #121212;
+      }
+
+      .social-link {
+        font-size: 1.8rem;
+        margin: 0 10px;
+        color: inherit;
+        text-decoration: none;
+        transition: transform 0.2s;
+        display: inline-block;
+      }
+
+      .social-link:hover {
+        transform: translateY(-3px);
+        color: inherit;
       }
     </style>
   </head>
 
-  <body class="bg-dark text-dark">
+  <body class="bg-dark">
     <div class="main-content">
-      <div class="mb-4 text-center" data-toggle="tooltip" title="Hey there!">
-        <img
-          src="./images/avatar.jpg"
-          alt="Profile Image"
-          class="img-thumbnail rounded-circle"
-        />
+      <div class="text-center" data-toggle="tooltip" title="Hey there!">
+        <img src="./images/avatar.jpg" alt="Shaad Quazi" class="rounded-circle profile-img" />
       </div>
 
-      <div class="mb-3 text-center">
-        <h2>Shaad Quazi</h2>
-        <p>
-          Full Stack Engineer @
-          <b>
-            <i>
-              <a
-                href="https://scanbuy.com/"
-                target="_blank"
-                rel="noreferrer"
-                data-toggle="tooltip"
-                title="Learn more about my work!"
-              >
-                Scanbuy
-              </a>
-            </i>
-          </b>
+      <div class="text-center mb-4">
+        <h1 class="display-5 fw-normal">Shaad Quazi</h1>
+        <p class="lead">
+          Full Stack Engineer @ 
+          <a href="https://scanbuy.com/" target="_blank" rel="noreferrer" class="fw-bold text-decoration-none">Scanbuy</a>
         </p>
       </div>
 
-      <div class="mb-5 text-center">
-        <a href="http://github.com/shaadquazi" target="_blank" rel="noreferrer">
-          <b>
-            <i data-toggle="tooltip" title="Check out my projects!">
-              Projects
-            </i>
-          </b>
-        </a>
-        <p class="d-inline-block mx-2">|</p>
-        <a href="https://drive.google.com/file/d/1DCga-cJ2e4bTbB53Scu7o62CxkH7mWCj/view?usp=share_link" target="_blank" rel="noreferrer">
-          <b>
-            <i data-toggle="tooltip" title="Take a look at my resume!">
-              Resume
-            </i>
-          </b></a
-        >
+      <div class="text-center">
+        <a href="http://github.com/shaadquazi" target="_blank" rel="noreferrer" class="btn btn-outline-dark btn-theme btn-sm px-4 mx-1">Projects</a>
+        <a href="https://drive.google.com/file/d/1DCga-cJ2e4bTbB53Scu7o62CxkH7mWCj/view?usp=share_link" target="_blank" rel="noreferrer" class="btn btn-outline-dark btn-theme btn-sm px-4 mx-1">Resume</a>
       </div>
     </div>
 
-    <footer class="d-flex justify-content-between align-items-center p-3">
-      <div class="text-center">        
-        <a href="#" id="dashboardLink" class="mx-2">
-          <i class="bi bi-terminal" style="font-size: 2rem"></i>
+    <footer class="d-flex justify-content-between align-items-center px-4 py-3">
+      <div class="d-flex align-items-center">
+        <!-- Dashboard Link (Hidden on Home) -->
+        <a href="http://github.com/shaadquazi" target="_blank" rel="noreferrer" class="social-link">
+          <i class="bi bi-github"></i>
         </a>
-        <a href="http://github.com/shaadquazi" target="_blank" rel="noreferrer" class="mx-2">
-          <i class="bi bi-github" style="font-size: 2rem"></i>
+        <a href="https://www.linkedin.com/in/shaadquazi/" target="_blank" rel="noreferrer" class="social-link">
+          <i class="bi bi-linkedin"></i>
         </a>
-        <a
-          href="https://www.linkedin.com/in/shaadquazi/"
-          target="_blank"
-          rel="noreferrer"
-          class="mx-2"
-        >
-          <i class="bi bi-linkedin" style="font-size: 2rem"></i>
-        </a>
-        <a href="mailto:shaadquazi@gmail.com" class="mx-2">
-          <i class="bi bi-envelope" style="font-size: 2rem"></i>
+        <a href="mailto:shaadquazi@gmail.com" class="social-link">
+          <i class="bi bi-envelope"></i>
         </a>
       </div>
-      <div class="form-switch d-inline-block mx-2">
-        <input
-          class="form-check-input mt-3 mx-2"
-          type="checkbox"
-          role="switch"
-          id="themeToggle"
-          checked
-        />
-        <a class="form-check-label">
-          <i class="bi bi-moon-stars-fill" style="font-size: 2rem"></i>
-        </a>
+
+      <div class="form-check form-switch m-0">
+        <input class="form-check-input" type="checkbox" role="switch" id="themeToggle" checked />
+        <label class="form-check-label ms-2" for="themeToggle">
+          <i class="bi bi-moon-stars-fill"></i>
+        </label>
       </div>
     </footer>
 
@@ -195,39 +176,23 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 
     <script>
+      const body = document.body;
       const toggleBtn = document.getElementById("themeToggle");
-      toggleBtn.addEventListener("click", () => {
-        document.body.classList.toggle("bg-dark");
-        document.body.classList.toggle("text-light");
+
+      toggleBtn.addEventListener("change", () => {
+        body.classList.toggle("bg-dark");
+        // Optional: Save preference to localStorage
+        localStorage.setItem('theme', body.classList.contains('bg-dark') ? 'dark' : 'light');
       });
+
+      // Load preference
+      if (localStorage.getItem('theme') === 'light') {
+        body.classList.remove('bg-dark');
+        toggleBtn.checked = false;
+      }
 
       $(function () {
         $('[data-toggle="tooltip"]').tooltip();
-      });
-
-      // TODO: implement auth provider      
-      async function hashPassword(pwd) {
-        const encoder = new TextEncoder();
-        const data = encoder.encode(pwd);
-        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-        const hashArray = Array.from(new Uint8Array(hashBuffer));
-        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-        return hashHex;
-      }
-      const dashboardLink = document.getElementById("dashboardLink");
-      const HARD_CODED_HASH = "227c0fa5127c454e0ec4e0034274b35e5770ec68c0b0890653833e6fb2aa16ca"; 
-
-      dashboardLink.addEventListener("click", async (e) => {
-        e.preventDefault();
-        const pwd = prompt("Enter password:");
-        if (pwd !== null) {
-          const hashed = await hashPassword(pwd);
-          if (hashed === HARD_CODED_HASH) {
-            window.location.href = "./dashboard/index.html";
-          } else {
-            alert("Incorrect password!");
-          }
-        }
       });
     </script>
   </body>
